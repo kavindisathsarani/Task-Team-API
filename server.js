@@ -20,17 +20,11 @@ const sockets = new Map();
 
 io.on('connection', (socket) => {
   console.log('socket connected', socket.id);
-
   socket.on('register', (userId) => {
     sockets.set(userId, socket.id);
-    console.log('registered', userId, socket.id);
   });
-
   socket.on('disconnect', () => {
-    for (const [k, v] of sockets.entries()) {
-      if (v === socket.id) sockets.delete(k);
-    }
-    console.log('socket disconnected', socket.id);
+    for (const [k, v] of sockets.entries()) if (v === socket.id) sockets.delete(k);
   });
 });
 
