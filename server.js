@@ -8,7 +8,7 @@ const connectDB = require('./src/config/db');
 
 const authRoutes = require('./src/routes/auth');
 const userRoutes = require('./src/routes/users');
-// const teamRoutes = require('./src/routes/teams');
+const teamRoutes = require('./src/routes/teams');
 // const taskRoutes = require('./src/routes/tasks');
 // const reportRoutes = require('./src/routes/reports');
 
@@ -36,7 +36,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-// app.use('/api/teams', teamRoutes);
+app.use('/api/teams', teamRoutes);
 // app.use('/api/tasks', taskRoutes);
 // app.use('/api/reports', reportRoutes);
 
