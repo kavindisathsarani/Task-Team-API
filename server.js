@@ -4,23 +4,20 @@ const http = require('http');
 const cors = require('cors');
 const { Server } = require('socket.io');
 
-const connectDB = require('./config/db');
+const connectDB = require('./src/config/db');
 
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/users');
-const teamRoutes = require('./routes/teams');
-const taskRoutes = require('./routes/tasks');
-const reportRoutes = require('./routes/reports');
+const authRoutes = require('./src/routes/auth');
+const userRoutes = require('./src/routes/users');
+const teamRoutes = require('./src/routes/teams');
+const taskRoutes = require('./src/routes/tasks');
+const reportRoutes = require('./src/routes/reports');
 
 const app = express();
 const server = http.createServer(app);
 
-const io = new Server(server, {
-  cors: { origin: '*' }
-});
-
-// simple socket map: userId -> socketId
+const io = new Server(server, { cors: { origin: '*' } });
 const sockets = new Map();
+
 io.on('connection', (socket) => {
   console.log('socket connected', socket.id);
 
@@ -37,7 +34,6 @@ io.on('connection', (socket) => {
   });
 });
 
-// expose sendNotification helper to controllers via app.locals
 app.locals.io = io;
 app.locals.sockets = sockets;
 
@@ -50,7 +46,6 @@ app.use('/api/teams', teamRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/reports', reportRoutes);
 
-// error handler
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({ message: err.message || 'Server error' });
@@ -58,7 +53,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 connectDB(process.env.MONGO_URI || 'mongodb://localhost:27017/taskteam')
-  .then(() => {
-    server.listen(PORT, () => console.log(`Server running on ${PORT}`));
-  })
+  .then(() => server.listen(PORT, () => console.log(`Server running on ${PORT}`)))
   .catch(err => console.error(err));
