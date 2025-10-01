@@ -11,7 +11,8 @@ const { addComment, getComments } = require('../controllers/commentController');
 router.post('/', auth, permit('Admin','Manager'), createTask);
 router.get('/', auth, getTasks);
 router.get('/:id', auth, getTaskById);
-router.put('/:id', auth, permit('Admin','Manager'), updateTask);
+// router.put('/:id', auth, permit('Admin','Manager'), updateTask);
+router.put('/:id', auth, updateTask); // all logged-in users
 router.delete('/:id', auth, permit('Admin','Manager'), deleteTask);
 
 // Comment routes (nested under tasks)

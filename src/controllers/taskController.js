@@ -36,21 +36,75 @@ exports.getTaskById = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
+
 exports.updateTask = async (req, res, next) => {
   try {
-    const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    // console.log('Update task called for user:', req.user);
+
+    const task = await Task.findById(req.params.id);
+    // console.log('Fetched task:', task);
+
     if (!task) return res.status(404).json({ message: 'Task not found' });
 
-    // Notify assigned user if status changed
+    const user = req.user;
+
+    if (user.role === 'Employee') {
+    //   console.log('Employee role detected');
+
+      if (!task.assignedTo) {
+        // console.log('Task has no assigned user');
+        return res.status(400).json({ message: 'This task has no assigned user' });
+      }
+
+      const assignedToId = task.assignedTo.toString();
+    //   console.log('assignedToId:', assignedToId, 'user.id:', user.id.toString());
+
+      if (assignedToId !== user.id.toString()) {
+        return res.status(403).json({ message: 'Not allowed to update this task' });
+      }
+
+      if (!req.body.status) {
+        return res.status(400).json({ message: 'Employees can only update status' });
+      }
+
+      task.status = req.body.status;
+    } else {
+    //   console.log('Admin/Manager role detected, updating all fields');
+      Object.assign(task, req.body);
+    }
+
+    await task.save();
+
+    // Socket notification
     if (req.body.status && task.assignedTo && req.app.locals.sockets.has(task.assignedTo.toString())) {
       const socketId = req.app.locals.sockets.get(task.assignedTo.toString());
       req.app.locals.io.to(socketId).emit('taskStatusUpdated', task);
-      console.log('Socket event emitted: taskStatusUpdated for user', task.assignedTo);
+      console.log('Socket event emitted: taskStatusUpdated for user', task.assignedTo.toString());
     }
 
+    console.log('Task updated successfully');
     res.json(task);
-  } catch (err) { next(err); }
+  } catch (err) {
+    console.error('Error in updateTask:', err);
+    next(err);
+  }
 };
+
+// exports.updateTask = async (req, res, next) => {
+//   try {
+//     const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
+//     if (!task) return res.status(404).json({ message: 'Task not found' });
+
+//     // Notify assigned user if status changed
+//     if (req.body.status && task.assignedTo && req.app.locals.sockets.has(task.assignedTo.toString())) {
+//       const socketId = req.app.locals.sockets.get(task.assignedTo.toString());
+//       req.app.locals.io.to(socketId).emit('taskStatusUpdated', task);
+//       console.log('Socket event emitted: taskStatusUpdated for user', task.assignedTo);
+//     }
+
+//     res.json(task);
+//   } catch (err) { next(err); }
+// };
 
 exports.addComment = async (req, res, next) => {
   try {
