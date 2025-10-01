@@ -143,17 +143,37 @@ Socket.IO events triggered for:
 ## 📁 Project Structure
 
 ```
-Task-Team-API/
-├── controllers/
-├── models/
-├── routes/
-├── middlewares/
-├── utils/
-├── socket/
-├── config/
-├── .env
-├── server.js
-└── README.md
+task-team-api/
+├─ package.json
+├─ .env.example
+├─ server.js
+├─ src/
+│  ├─ config/
+│  │  └─ db.js
+│  ├─ models/
+│  │  ├─ User.js
+│  │  ├─ Team.js
+│  │  ├─ Task.js
+│  │  ├─ Comment.js
+│  │  └─ Log.js
+│  ├─ middlewares/
+│  │  ├─ auth.js
+│  │  └─ roles.js
+│  ├─ validators/
+│  │  └─ auth.js
+│  ├─ controllers/
+│  │  ├─ authController.js
+│  │  ├─ userController.js
+│  │  ├─ teamController.js
+│  │  ├─ taskController.js
+│  │  └─ reportController.js
+│  └─ routes/
+│     ├─ auth.js
+│     ├─ users.js
+│     ├─ teams.js
+│     ├─ tasks.js
+│     └─ reports.js
+└─ README.md
 ```
 
 ## 🔄 GitHub Workflow
@@ -170,9 +190,9 @@ Task-Team-API/
 - Socket connection output confirms real-time functionality
 - Ensure MongoDB is running before starting the server
 
-## 📞 Support
-
-For issues or questions, please contact the development team or create an issue in the repository.
+## 📄 Postman Collection
+ 
+- 📦 [Postman Collection](./Task-Team-API-postman-collection.json)
 
 ---
 
