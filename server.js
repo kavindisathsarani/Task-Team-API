@@ -9,8 +9,8 @@ const connectDB = require('./src/config/db');
 const authRoutes = require('./src/routes/auth');
 const userRoutes = require('./src/routes/users');
 const teamRoutes = require('./src/routes/teams');
-// const taskRoutes = require('./src/routes/tasks');
-// const reportRoutes = require('./src/routes/reports');
+const taskRoutes = require('./src/routes/tasks');
+const reportRoutes = require('./src/routes/reports');
 
 const app = express();
 const server = http.createServer(app);
@@ -37,8 +37,8 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/teams', teamRoutes);
-// app.use('/api/tasks', taskRoutes);
-// app.use('/api/reports', reportRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/reports', reportRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err);
