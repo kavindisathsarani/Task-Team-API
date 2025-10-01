@@ -4,14 +4,29 @@ const socket = io("http://localhost:5000");
 
 socket.on("connect", () => {
   console.log("Connected with socket id:", socket.id);
-
-  // Register a user (replace with an actual user _id from your DB)
-  socket.emit("register", "68db8df60472f019e1afdb8e");
+  socket.emit("register", "68db8df60472f019e1afdb8e"); // userId
 });
 
 socket.on("taskAssigned", (task) => {
   console.log("New task assigned:", task);   
 });
+
+socket.on("taskStatusUpdated", (task) => {
+  console.log("Task status updated:", task);     
+});
+
+//output
+// socket connected vOPg-OO0IZUx_w1qAAAB
+// Socket event emitted: taskStatusUpdated for user new ObjectId("68db8df60472f019e1afdb8e")
+
+socket.on("newComment", ({ task, comment }) => {
+  console.log("New comment added:", comment, "on task:", task.title);
+});
+
+socket.on("taskDeleted", (task) => {
+  console.log("Task deleted:", task);
+});
+
 
 //first run -> npm run dev then in a new terminal run -> node socketClient.js
 // Connected with socket id: xLzKnqaye2g4vo2TAAAB
