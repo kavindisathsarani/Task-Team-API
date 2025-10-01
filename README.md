@@ -55,7 +55,7 @@ A comprehensive RESTful API built with Node.js, Express, and MongoDB for managin
    npm run dev
    ```
 
-5. **Test Socket.IO (Optional)**
+5. **Test Socket.IO**
    In a new terminal, run:
    ```bash
    node socketClient.js
