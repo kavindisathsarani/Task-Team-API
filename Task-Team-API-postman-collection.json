@@ -1,0 +1,877 @@
+{
+	"info": {
+		"_postman_id": "8281f1d8-8131-4610-aae9-f4765e21cef9",
+		"name": "Task-Team-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40188635"
+	},
+	"item": [
+		{
+			"name": "Register a user",
+			"item": [
+				{
+					"name": "Register an admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Admin User\",\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"Admin\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register an employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTMxMDc0MiwiZXhwIjoxNzYxMDM4NzQyfQ.lppDnkdvhcf57Ej1RixwF9Vv8eoMz88rY2VRGCcZlPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Alice Smith\",\r\n  \"email\": \"alice@example.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"Employee\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register a manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTMxMzkxNSwiZXhwIjoxNzYxMDQxOTE1fQ.X012oqKRjs_dSS4JgQ4DvEzqVIMZjtgABFvOyAei4Vw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Manager One\",\r\n  \"email\": \"manager1@example.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"Manager\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"alice@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTMxMzkxNSwiZXhwIjoxNzYxMDQxOTE1fQ.X012oqKRjs_dSS4JgQ4DvEzqVIMZjtgABFvOyAei4Vw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"manager1@example.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Team",
+			"item": [
+				{
+					"name": "Create a team",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTIxOTY4MiwiZXhwIjoxNzYwOTQ3NjgyfQ.qwOTeQNxfYpNtSyL-SbfSRccRPUae2WiwilIfzpVnXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Development Team\",\r\n  \"description\": \"Handles all development tasks\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all teams",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign a user to a team",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTMxMDc0MiwiZXhwIjoxNzYxMDM4NzQyfQ.lppDnkdvhcf57Ej1RixwF9Vv8eoMz88rY2VRGCcZlPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"68dcf883d06d29902a33ccd0\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/teams/68db8ffe0472f019e1afdb94/assign",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teams",
+								"68db8ffe0472f019e1afdb94",
+								"assign"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create Tasks by Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Setup CI/CD Pipeline\",\r\n  \"description\": \"Configure continuous integration and deployment for the project\",\r\n  \"status\": \"todo\",\r\n  \"priority\": \"medium\",\r\n  \"dueDate\": \"2025-10-20\",\r\n  \"assignedTo\": \"68dcf883d06d29902a33ccd0\",\r\n  \"teamId\": \"68db8ffe0472f019e1afdb94\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/68dcaa4bd7a946cb2144b2a2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks",
+								"68dcaa4bd7a946cb2144b2a2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTMxMzkxNSwiZXhwIjoxNzYxMDQxOTE1fQ.X012oqKRjs_dSS4JgQ4DvEzqVIMZjtgABFvOyAei4Vw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"todo\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/68dcaa4bd7a946cb2144b2a2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks",
+								"68dcaa4bd7a946cb2144b2a2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update their own task 's status by employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGNmODgzZDA2ZDI5OTAyYTMzY2NkMCIsInJvbGUiOiJFbXBsb3llZSIsImlhdCI6MTc1OTMxNDcxNCwiZXhwIjoxNzYxMDQyNzE0fQ.k5qFT313ZttYuoEzjiquwb2B1jnkvpDBb4dZrUogJ14",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"in-progress\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/68dd00b5cff7fb2bbb569570",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks",
+								"68dd00b5cff7fb2bbb569570"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tasks by Manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGQzMzlmZGRkZTcyZDUyODVkMjVmNCIsInJvbGUiOiJNYW5hZ2VyIiwiaWF0IjoxNzU5MzI3MjQ1LCJleHAiOjE3NjEwNTUyNDV9.0eaCnIIwCq7BHcjXVUBoQkmusMxPHgUBBZXjiMxqnnk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Build API Endpoints\",\r\n  \"description\": \"Implement authentication and reports module\",\r\n  \"status\": \"todo\",\r\n  \"priority\": \"high\",\r\n  \"dueDate\": \"2025-10-05\",\r\n  \"assignedTo\": \"68dcf883d06d29902a33ccd0\",\r\n  \"teamId\": \"68db8ffe0472f019e1afdb94\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTMxMzkxNSwiZXhwIjoxNzYxMDQxOTE1fQ.X012oqKRjs_dSS4JgQ4DvEzqVIMZjtgABFvOyAei4Vw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/68dd35d5ddde72d5285d2609",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks",
+								"68dd35d5ddde72d5285d2609"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Add a comment to a task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Started fixing the login bug.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/68dcaa4bd7a946cb2144b2a2/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks",
+								"68dcaa4bd7a946cb2144b2a2",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comments by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTI5MTg2MywiZXhwIjoxNzYxMDE5ODYzfQ.Dlt26Rmm3yTso0URAGgOiRARt13uxm0d4A7bD0V5cyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/tasks/68dcaa4bd7a946cb2144b2a2/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tasks",
+								"68dcaa4bd7a946cb2144b2a2",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "get a full report by Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGI4ZGY2MDQ3MmYwMTllMWFmZGI4ZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1OTMxMDc0MiwiZXhwIjoxNzYxMDM4NzQyfQ.lppDnkdvhcf57Ej1RixwF9Vv8eoMz88rY2VRGCcZlPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/reports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a full report by Manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGQzMzlmZGRkZTcyZDUyODVkMjVmNCIsInJvbGUiOiJNYW5hZ2VyIiwiaWF0IjoxNzU5MzI3MjQ1LCJleHAiOjE3NjEwNTUyNDV9.0eaCnIIwCq7BHcjXVUBoQkmusMxPHgUBBZXjiMxqnnk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/reports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
